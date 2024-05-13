@@ -18,6 +18,7 @@ client = OpenAI(
 
 @app.get('/predict/{rev}' , status_code=200)
 def predict(rev : str):
+    rev=rev.replace("-"," ")    
     response = client.chat.completions.create(
     model="llama-13b-chat",
     messages=[
