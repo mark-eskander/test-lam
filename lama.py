@@ -2,6 +2,7 @@ from llamaapi import LlamaAPI
 from openai import OpenAI
 from fastapi import FastAPI
 import uvicorn
+import os
 
 app = FastAPI( debug = True)
 
@@ -10,9 +11,9 @@ def check_for_positive(review):
             return 1
         else:
             return 0
-
+api_key = os.getenv("LLAMA_API_KEY")
 client = OpenAI(
-    api_key="LL-1RC7LxETXTYzdwml76VfaP4ynaZunA7vsXXOTL9n0gMzuGB2VnJgb85xhAMKmlnv",
+    api_key= api_key,
     base_url="https://api.llama-api.com"
 )
 
